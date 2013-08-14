@@ -345,9 +345,8 @@ int pstore_mkfile(enum pstore_type_id type, char *psname, u64 id, int count,
 
 	mutex_lock(&root->d_inode->i_mutex);
 
-	rc = -ENOSPC;
 	dentry = d_alloc_name(root, name);
-	if (IS_ERR(dentry))
+	if (!dentry)
 		goto fail_lockedalloc;
 #ifdef VENDOR_EDIT  // modify by yangrujin@bsp for ramoops memcpy addr alignment 2015-05-27
         memcpy_pstore(private->data, data, size);
