@@ -596,10 +596,11 @@ void msm_isp_notify(struct vfe_device *vfe_dev, uint32_t event_type,
 	case ISP_EVENT_SOF: {
 		src_info = &vfe_dev->axi_data.src_info[frame_src];
 
-		msm_isp_check_for_output_error(vfe_dev, ts,
-			&event_data.u.output_info);
-
 		if (frame_src == VFE_PIX_0) {
+
+			msm_isp_check_for_output_error(vfe_dev, ts,
+				&event_data.u.output_info);
+
 			vfe_dev->axi_data.src_info[frame_src].frame_id +=
 				vfe_dev->axi_data.src_info[frame_src].
 				sof_counter_step;
@@ -815,7 +816,6 @@ int msm_isp_request_axi_stream(struct vfe_device *vfe_dev, void *arg)
 	}
 
 	stream_info->memory_input = stream_cfg_cmd->memory_input;
-
 	vfe_dev->reg_update_requested &=
 		~(BIT(stream_info->stream_src));
 
