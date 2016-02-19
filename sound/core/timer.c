@@ -347,7 +347,7 @@ int snd_timer_close(struct snd_timer_instance *timeri)
 		list_for_each_entry_safe(slave, tmp, &timeri->slave_list_head,
 					 open_list) {
 			spin_lock_irq(&slave_active_lock);
-			_snd_timer_stop(slave, 1, SNDRV_TIMER_EVENT_RESOLUTION);
+//			_snd_timer_stop(slave, 1, SNDRV_TIMER_EVENT_RESOLUTION);
 			list_move_tail(&slave->open_list, &snd_timer_slave_list);
 			slave->master = NULL;
 			slave->timer = NULL;
