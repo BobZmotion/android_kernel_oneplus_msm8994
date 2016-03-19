@@ -74,7 +74,7 @@
 #define PAGESIZE 512
 #define TPD_USE_EINT
 
-#define SYNAPTICS_NAME "synaptics_gestures"
+#define SYNAPTICS_NAME "synaptics"
 #define TPD_DEVICE "synaptics,s3320"
 
 //#define SUPPORT_SLEEP_POWEROFF
